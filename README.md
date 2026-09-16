@@ -106,7 +106,7 @@ A falta de um sistema centralizado pode fazer com que informações sobre objeto
 - 👨‍💼 Área administrativa;
 - 📈 Estatísticas sobre objetos perdidos e recuperados.
 
-#👥 Equipe
+# 👥 Equipe
 
 **O projeto RECUPERAIFRN está sendo desenvolvido por:**
 
