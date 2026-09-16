@@ -1,5 +1,5 @@
-# RECUPERAIFRN
-Achou. Registrou. Recuperou.
+# RecuperaIFRN_Conectando objetos perdidos aos seus donos
+
 
 O sistema de achados e perdidos tem como objetivo facilitar o cadastro, a organização e a busca por objetos perdidos ou encontrados.
 Nele, os usuários podem se cadastrar, registrar informações sobre os objetos, descrever suas características e utilizar filtros para facilitar a busca. Também é possível atualizar o status dos objetos, informando se eles ainda estão perdidos ou se já foram encontrados.
