@@ -117,7 +117,7 @@
 - 👩‍💻 Adi Hillary
 - 👨‍💻 Cauã Araújo
 
-**🤝 Sobre a equipe**
+***🤝 Sobre a equipe***
 - A equipe trabalha de forma colaborativa no desenvolvimento do sistema, envolvendo atividades de planejamento, programação, organização, documentação e testes, buscando construir uma solução funcional para o gerenciamento de objetos perdidos e encontrados.
 
 
