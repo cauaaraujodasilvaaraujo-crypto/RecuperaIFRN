@@ -5,7 +5,7 @@ Nele, os usuários podem se cadastrar, registrar informações sobre os objetos,
 Além disso, o sistema facilita a comunicação entre as pessoas, ajudando na localização e na devolução dos objetos aos seus respectivos donos.
 Funcionalidades mais complexas, como a integração com outros sistemas ou a realização de pagamentos, não fazem parte do objetivo deste projeto.
 
-# 1.🛠️funcionalidades
+#                     🛠️funcionalidades
 - 👤 Cadastro de usuários
 
 - 📦 Registro de objetos perdidos
