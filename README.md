@@ -6,20 +6,20 @@ Além disso, o sistema facilita a comunicação entre as pessoas, ajudando na lo
 Funcionalidades mais complexas, como a integração com outros sistemas ou a realização de pagamentos, não fazem parte do objetivo deste projeto.
 
 # 🛠️funcionalidades
--👤 Cadastro de usuários
+- 👤 Cadastro de usuários
 
--📦 Registro de objetos perdidos
+- 📦 Registro de objetos perdidos
 
--🔎 Busca de objetos
+- 🔎 Busca de objetos
 
--🏷️ Filtros por categoria e 
+- 🏷️ Filtros por categoria e 
 
--📍 Registro do local onde o objeto foi perdido/encontrado
+- 📍 Registro do local onde o objeto foi perdido/encontrado
 
--🔄 Atualização do status do objeto
+- 🔄 Atualização do status do objeto
 
--💬 Comunicação entre usuários
+- 💬 Comunicação entre usuários
 
--✅ Registro da devolução do objeto
+- ✅ Registro da devolução do objeto
 
 
