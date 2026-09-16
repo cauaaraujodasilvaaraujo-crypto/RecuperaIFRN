@@ -1,0 +1,83 @@
+
+
+// RECUPERA IFRN — schema.prisma//
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql" // troque para "postgresql" ou "sqlite" se necessário
+  url      = env("DATABASE_URL")
+}
+
+
+model Usuario {
+  matricula Int      @id
+  nome      String   @db.VarChar(200)
+  email     String?  @unique @db.VarChar(150)
+  senha     String?  @db.VarChar(255) // hash de senha — só servidores autenticam (RNF_04)
+  coapac    Boolean  @default(false) // true = servidor autorizado da COAPAC
+  criadoEm  DateTime @default(now())
+
+  itensCadastrados Item[] @relation("ItemCadastradoPor")
+  itensRetirados   Item[] @relation("ItemRetiradoPor")
+
+  @@map("usuarios")
+}
+
+
+model Classificacao {
+  id   Int    @id @default(autoincrement())
+  nome String @unique @db.VarChar(60) // Carteira, Chave, Celular, Fone de ouvido...
+
+  itens Item[]
+
+  @@map("classificacoes")
+}
+
+enum TipoRegistro {
+  PERDIDO
+  ENCONTRADO
+}
+
+enum StatusItem {
+  DISPONIVEL
+  RETIRADO
+}
+
+
+model Item {
+  id     Int     @id @default(autoincrement())
+  nome   String  @db.VarChar(100) // "Nome do item" (slide 7)
+  descricao String? @db.VarChar(300)
+  cor    String? @db.VarChar(45) // campo "Cor" na busca (slide 8)
+
+  classificacaoId Int
+  classificacao   Classificacao @relation(fields: [classificacaoId], references: [id])
+
+  tipo   TipoRegistro @default(ENCONTRADO)
+  status StatusItem   @default(DISPONIVEL) // RF_F2 — Disponível/Retirado
+
+  dataEncontrado  DateTime @db.Date
+  localEncontrado String   @db.VarChar(300)
+  foto            String?  @db.VarChar(300) // opcional (slide 7)
+
+  dataEntrega  DateTime? @db.Date // RF_F3 — preenchido na retirada
+  localEntrega String?   @db.VarChar(300)
+
+  cadastradoPorMatricula Int
+  cadastradoPor          Usuario @relation("ItemCadastradoPor", fields: [cadastradoPorMatricula], references: [matricula])
+
+  retiradoPorMatricula Int?
+  retiradoPor          Usuario? @relation("ItemRetiradoPor", fields: [retiradoPorMatricula], references: [matricula])
+
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  @@index([status]) // RF_S1 — lista de itens disponíveis
+  @@index([dataEncontrado])
+  @@map("itens")
+}
