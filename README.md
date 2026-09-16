@@ -70,13 +70,13 @@
 
 **O sistema é destinado principalmente a:**
 
--🎓 Estudantes;
+- 🎓 Estudantes;
 
--👨‍🏫 Professores;
+- 👨‍🏫 Professores;
 
--👨‍💼 Funcionários;
+- 👨‍💼 Funcionários;
 
--🏫 Outros membros da instituição.
+- 🏫 Outros membros da instituição.
 
 # ⚙️Funcionalidades
 
