@@ -54,15 +54,67 @@
 - ⚙️ Back-end: [tecnologias que vocês estão usando]
 - 🗄️ Banco de dados: [se já tiver definido]
 
+# 📌 2. O problema
 
+**❗ O problema**
 
+- No ambiente escolar, é comum que estudantes e funcionários percam objetos pessoais. Muitas vezes, mesmo quando um objeto é encontrado, existe dificuldade para localizar seu proprietário.
 
+A falta de um sistema centralizado pode fazer com que informações sobre objetos perdidos fiquem espalhadas ou sejam esquecidas.
 
+# 💡 Nossa solução
 
+- O RECUPERAIFRN propõe uma plataforma centralizada para registrar e organizar objetos perdidos e encontrados, facilitando a pesquisa, a identificação e a comunicação entre os usuários.
 
+# 👥 Público-alvo
 
+**O sistema é destinado principalmente a:**
 
+-🎓 Estudantes;
+-👨‍🏫 Professores;
+-👨‍💼 Funcionários;
+-🏫 Outros membros da instituição.
 
+# ⚙️Funcionalidades
+
+| Funcionalidade      | Descrição                                |
+| --------------------|------------------------------------------|
+| 👤 Cadastro         | Criação de conta do usuário             |
+| 📦 Registrar objeto | Cadastro de itens perdidos/encontrados  |
+| 🔎 Pesquisa         | Busca por objetos cadastrados           |
+| 🏷️ Filtros          | Categoria, local, data etc.             |
+| 🔄 Status           | Perdido, encontrado ou devolvido        |
+| 💬 Comunicação      | Contato entre os usuários               |
+| ✅ Devolução        | Registro de que o objeto foi recuperado |
+
+# 🔐 Segurança e privacidade
+
+- O sistema deverá utilizar mecanismos para proteger as informações dos usuários e evitar o compartilhamento desnecessário de dados pessoais.
+- Também podem ser definidos níveis de acesso para determinadas funcionalidades.
+
+# Futuras melhorias
+
+**Essa é uma seção muito boa para mostrar que vocês pensaram além da primeira versão:**
+
+- 🚀 Possíveis melhorias futuras
+- 📱 Desenvolvimento de aplicativo para celular;
+- 🔔 Notificações sobre possíveis correspondências;
+- 📸 Upload de fotos dos objetos;
+- 🗺️ Mapa dos locais onde objetos foram encontrados;
+- 🔍 Sistema de correspondência automática entre objetos perdidos e encontrados;
+- 📧 Notificações por e-mail;
+- 👨‍💼 Área administrativa;
+- 📈 Estatísticas sobre objetos perdidos e recuperados.
+
+#👥 Equipe
+
+**O projeto RECUPERAIFRN está sendo desenvolvido por:**
+
+- 👩‍💻 Ana Letícia
+- 👩‍💻 Adi Hillary
+- 👨‍💻 Cauã Araújo
+**🤝 Sobre a equipe**
+- A equipe trabalha de forma colaborativa no desenvolvimento do sistema, envolvendo atividades de planejamento, programação, organização, documentação e testes, buscando construir uma solução funcional para o gerenciamento de objetos perdidos e encontrados.
 
 
 
