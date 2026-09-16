@@ -7,12 +7,19 @@ Funcionalidades mais complexas, como a integração com outros sistemas ou a rea
 
 # 🛠️funcionalidades
 -👤 Cadastro de usuários
+
 -📦 Registro de objetos perdidos
+
 -🔎 Busca de objetos
--🏷️ Filtros por categoria e características
+
+-🏷️ Filtros por categoria e 
+
 -📍 Registro do local onde o objeto foi perdido/encontrado
+
 -🔄 Atualização do status do objeto
+
 -💬 Comunicação entre usuários
+
 -✅ Registro da devolução do objeto
 
 
