@@ -42,8 +42,11 @@
 **Não fazem parte do escopo inicial:**
 
 ❌ Sistemas de pagamento;
-❌ Integração com sistemas externos;
+
+❌ Integração com sistemas externos
+
 ❌ Serviços de terceiros;
+
 ❌ Funcionalidades que não estejam relacionadas diretamente ao gerenciamento de objetos perdidos e encontrados.
 
 # 🧩 Tecnologias
