@@ -60,7 +60,7 @@
 
 - No ambiente escolar, é comum que estudantes e funcionários percam objetos pessoais. Muitas vezes, mesmo quando um objeto é encontrado, existe dificuldade para localizar seu proprietário.
 
-A falta de um sistema centralizado pode fazer com que informações sobre objetos perdidos fiquem espalhadas ou sejam esquecidas.
+- A falta de um sistema centralizado pode fazer com que informações sobre objetos perdidos fiquem espalhadas ou sejam esquecidas.
 
 # 💡 Nossa solução
 
