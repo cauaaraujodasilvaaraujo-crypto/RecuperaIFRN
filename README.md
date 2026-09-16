@@ -113,8 +113,8 @@
 
 **O projeto RECUPERAIFRN está sendo desenvolvido por:**
 
-- 👩‍💻 Ana Letícia
 - 👩‍💻 Adi Hillary
+- 👩‍💻 Ana Letícia
 - 👨‍💻 Cauã Araújo
 
 ***🤝 Sobre a equipe***
