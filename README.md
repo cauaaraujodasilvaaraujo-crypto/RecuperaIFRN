@@ -34,3 +34,39 @@
 - Encontre → O sistema facilita a identificação de possíveis correspondências.
 
 - Devolva → Os usuários podem entrar em contato para realizar a devolução.
+
+ # 🚫o que o sistema NÃO faz
+
+- O projeto será concentrado nas funcionalidades essenciais de um sistema de achados e perdidos.
+
+**Não fazem parte do escopo inicial:**
+
+❌ Sistemas de pagamento;
+❌ Integração com sistemas externos;
+❌ Serviços de terceiros;
+❌ Funcionalidades que não estejam relacionadas diretamente ao gerenciamento de objetos perdidos e encontrados.
+
+# 🧩 Tecnologias
+- 🌐 Front-end: [tecnologias que vocês estão usando]
+- ⚙️ Back-end: [tecnologias que vocês estão usando]
+- 🗄️ Banco de dados: [se já tiver definido]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
