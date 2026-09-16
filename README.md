@@ -6,4 +6,4 @@ Além disso, o sistema facilita a comunicação entre as pessoas, ajudando na lo
 Funcionalidades mais complexas, como a integração com outros sistemas ou a realização de pagamentos, não fazem parte do objetivo deste projeto.
 
 # funcionalidades
-- 👤 Cadastro de usuários
+_👤 Cadastro de usuários
