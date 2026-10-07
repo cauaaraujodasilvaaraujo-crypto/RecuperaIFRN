@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - RecuperaIFRN</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; padding-top: 50px; }
+        .form-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { color: #2E8B57; text-align: center; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #333; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #111; }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>Entrar no RecuperaIFRN</h2>
+        <form action="http://localhost:3000/usuarios/login" method="POST">
+            <label>Matrícula</label>
+            <input type="number" name="matricula" required placeholder="Sua matrícula do SUAP">
+
+            <label>Senha</label>
+            <input type="password" name="senha" required placeholder="Sua senha">
+
+            <button type="submit">Entrar</button>
+        </form>
+        <p style="text-align: center; margin-top: 15px;">Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+    </div>
+</body>
+</html>

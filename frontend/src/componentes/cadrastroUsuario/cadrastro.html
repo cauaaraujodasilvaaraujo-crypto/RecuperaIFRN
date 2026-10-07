@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - RecuperaIFRN</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; padding-top: 50px; }
+        .form-box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { color: #2E8B57; text-align: center; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #2E8B57; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #246B43; }
+    </style>
+</head>
+<body>
+    <div class="form-box">
+        <h2>Cadastrar no RecuperaIFRN</h2>
+        <form action="http://localhost:3000/usuarios/cadastro" method="POST">
+            <label>Matrícula (SUAP)</label>
+            <input type="number" name="matricula" required placeholder="Ex: 20211011110001">
+
+            <label>Nome Completo</label>
+            <input type="text" name="nome" required placeholder="Digite seu nome">
+
+            <label>Email Institucional</label>
+            <input type="email" name="email" required placeholder="email@escolar.ifrn.edu.br">
+
+            <label>Senha</label>
+            <input type="password" name="senha" required placeholder="Crie uma senha">
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        <p style="text-align: center; margin-top: 15px;"><a href="index.html">Voltar para o início</a></p>
+    </div>
+</body>
+</html>
