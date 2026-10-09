@@ -1,71 +1,71 @@
-const express = require('express');
-const cors = require('cors');
-const { PrismaClient } = require('@prisma/client');
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+//var session = require('express-session');
+var logger = require('morgan');
 
-const app = express();
-const prisma = new PrismaClient();
+var indexRouter = require('./routes/index');
+var usuariosRouter = require('./routes/Usuario');
+var classificacaoRouter = require('./routes/classificacao');
 
-// Middlewares
-app.use(cors());
+var app = express();
+//var sessionSecret = process.env.SESSION_SECRET;
+//var allowedOrigins = (process.env.FRONTEND_ORIGINS || 'http://localhost:5173,http://127.0.0.1:5173')
+//  .split(',')
+//  .map(function(origin) { return origin.trim(); })
+//  .filter(Boolean);
+
+//if (!sessionSecret && process.env.NODE_ENV === 'production') {
+//  throw new Error('SESSION_SECRET precisa ser definido em produção.');
+//}
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
+app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Rota de boas-vindas / teste (Evita o erro "Cannot GET /")
-app.get('/', (req, res) => {
-  res.json({ mensagem: "API do RecuperaIFRN está rodando com sucesso!" });
-});
-
-// 1. ROTA DE CADASTRO
-app.post('/usuarios/cadastro', async (req, res) => {
-  try {
-    const { matricula, nome, email, senha } = req.body;
-    const matriculaInt = parseInt(matricula, 10);
-
-    const novoUsuario = await prisma.usuario.create({
-      data: {
-        matricula: matriculaInt,
-        nome,
-        email,
-        senha,
-        coapac: false
-      }
-    });
-
-    res.status(201).json({ mensagem: "Usuário cadastrado com sucesso!", usuario: novoUsuario });
-  } catch (erro) {
-    console.error(erro);
-    res.status(400).json({ erro: "Erro ao cadastrar. Matrícula ou e-mail já existente." });
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use((req, res, next) => {
+  var origin = req.headers.origin;
+  if (origin && allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Vary', 'Origin');
+  } else {
+    res.header('Access-Control-Allow-Origin', '*');
   }
-});
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
 
-// 2. ROTA DE LOGIN (SIMULADO)
-app.post('/usuarios/login', async (req, res) => {
-  try {
-    const { matricula, senha } = req.body;
-    const matriculaInt = parseInt(matricula, 10);
-
-    const usuario = await prisma.usuario.findUnique({
-      where: { matricula: matriculaInt }
-    });
-
-    if (!usuario) {
-      return res.status(404).json({ erro: "Matrícula não cadastrada." });
-    }
-
-    if (usuario.senha !== senha) {
-      return res.status(401).json({ erro: "Senha incorreta." });
-    }
-
-    res.status(200).json({ 
-      mensagem: "Login realizado com sucesso!", 
-      usuario: { matricula: usuario.matricula, nome: usuario.nome, email: usuario.email }
-    });
-  } catch (erro) {
-    res.status(500).json({ erro: "Erro interno no servidor." });
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
   }
+
+  next();
+});
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/usuarios', usuariosRouter);
+app.use('/classificacao', classificacaoRouter);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
 });
 
-const PORTA = 3000;
-app.listen(PORTA, () => {
-  console.log(`Servidor rodando em http://localhost:${PORTA}`);
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
+
+module.exports = app;

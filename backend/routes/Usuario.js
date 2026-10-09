@@ -74,7 +74,7 @@ router.get("/me", authMiddleware, async function (req, res) {
 
 // LISTAR TODOS OS USUÁRIOS
 // GET /Usuarios
-router.get("/", authMiddleware, requireAdmin, async function (req, res) {
+router.get("/", async function (req, res) {
   try {
     const usuarios = await prisma.usuario.findMany();
     res.status(200).json(usuarios.map(sanitizeUsuario));
