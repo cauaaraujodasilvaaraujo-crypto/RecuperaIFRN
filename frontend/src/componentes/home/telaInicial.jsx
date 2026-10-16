@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import "./telaInicial.css";
+
 // Página provisória: só prova que o login e o token estão funcionando.
 // Depois vira a tela de itens (lista, busca, cadastro de item...).
 function Home() {
@@ -11,8 +13,8 @@ function Home() {
         <p>O sistema de Achados e Perdidos oficial do seu campus.</p>
         <p>Perdeu alguma coisa ou encontrou algo no campus? Acesse o sistema!</p>
         
-        <a href="login" className="btn-login">Entrar (Login)</a>
-        <a href="cadastro" className="btn-cadastro">Criar Cadastro</a>
+        <a href="login" className="btn btn-login">Entrar (Login)</a>
+        <a href="cadastro" className="btn btn-cadastro">Criar Cadastro</a>
     </div>
     </main>
     </>
