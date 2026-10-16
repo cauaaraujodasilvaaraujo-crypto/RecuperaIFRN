@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { API_URL } from "../../api";
 
 function Login({ onLogin }) {
   const [form, setForm] = useState({ email: "", senha: "" });

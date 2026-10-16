@@ -1,3 +1,8 @@
+const express = require("express");
+const router = express.Router();
+
+const prisma = require("../prisma/client");
+const { authMiddleware, requireAdmin } = require("../auth");
 // ATUALIZAR UM ITEM
 // PUT /Itens/:id
 router.put("/:id", authMiddleware, requireAdmin, async function (req, res) {
@@ -144,5 +149,16 @@ router.delete("/:id", authMiddleware, requireAdmin, async function (req, res) {
     return res.status(500).json({ error: "Falha ao deletar item" });
   }
 });
+router.get("/", async function (req, res) {
+  try {
+    const item = await prisma.item.findMany({
+      orderBy: { nome: "asc" },
+    });
 
+    res.status(200).json(item);
+  } catch (error) {
+    console.error("Erro ao listar itens:", error);
+    res.status(500).json({ error: "Falha ao listar itens" });
+  }
+});
 module.exports = router;
