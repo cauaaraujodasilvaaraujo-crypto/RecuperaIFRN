@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Usuario {
-  matricula Int      @id
+  matricula String   @id @db.VarChar(20)
   nome      String   @db.VarChar(200)
   email     String?  @unique @db.VarChar(150)
   senha     String?  @db.VarChar(255)
@@ -59,10 +59,10 @@ model Item {
   dataEntrega  DateTime? @db.Date
   localEntrega String?   @db.VarChar(300)
 
-  cadastradoPorMatricula Int
+  cadastradoPorMatricula String   @db.VarChar(20)
   cadastradoPor          Usuario @relation("ItemCadastradoPor", fields: [cadastradoPorMatricula], references: [matricula])
 
-  retiradoPorMatricula Int?
+  retiradoPorMatricula String?    @db.VarChar(20)
   retiradoPor          Usuario? @relation("ItemRetiradoPor", fields: [retiradoPorMatricula], references: [matricula])
 
   criadoEm     DateTime @default(now())

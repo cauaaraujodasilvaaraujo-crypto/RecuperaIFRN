@@ -1,17 +1,27 @@
 :root {
   --verde: #2f9e41;
-  --verde-escuro: #237a32;
-  --fundo: #f3f6f4;
-  --texto: #1f2933;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  color: var(--texto);
+  --verde-hover: #248234;
+  --verde-escuro: #1b6627;
+  --verde-suave: #ecfdf5;
+  --verde-borda: rgba(47, 158, 65, 0.22);
+  --verde-glow: rgba(47, 158, 65, 0.16);
+  --fundo: #f8fafc;
+  --texto-principal: #0f172a;
+  --texto-secundario: #64748b;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--texto-principal);
 }
 
-* { box-sizing: border-box; }
+* { 
+  box-sizing: border-box; 
+}
 
 body {
   margin: 0;
   background: var(--fundo);
+  font-family: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .app-nav {

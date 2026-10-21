@@ -15,9 +15,68 @@ function sanitizeUsuario(usuario) {
 }
 
 function parseMatricula(valor) {
-  const matricula = Number(valor);
-  return Number.isInteger(matricula) ? matricula : null;
+  if (typeof valor !== "string" && typeof valor !== "number") {
+    return null;
+  }
+  if (typeof valor === "number" && !Number.isSafeInteger(valor)) {
+    return null;
+  }
+
+  const matricula = String(valor).trim();
+  return /^\d{1,20}$/.test(matricula) ? matricula : null;
 }
+
+// POST /Usuarios/cadastro
+router.post("/cadastro", async function (req, res) {
+  try {
+    const { matricula, nome, email, senha } = req.body;
+    const matriculaValida = parseMatricula(matricula);
+
+    if (
+      matriculaValida === null ||
+      typeof nome !== "string" ||
+      !nome.trim() ||
+      typeof email !== "string" ||
+      !email.trim() ||
+      typeof senha !== "string" ||
+      senha.length < 6 ||
+      Buffer.byteLength(senha, "utf8") > 72
+    ) {
+      return res.status(400).json({
+        error: "Informe matrícula válida, nome, e-mail e senha entre 6 e 72 bytes.",
+      });
+    }
+
+    const nomeNormalizado = nome.trim();
+    const emailNormalizado = email.trim().toLowerCase();
+    if (nomeNormalizado.length > 200 || emailNormalizado.length > 150) {
+      return res.status(400).json({ error: "Nome ou e-mail excede o tamanho permitido." });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailNormalizado)) {
+      return res.status(400).json({ error: "E-mail inválido." });
+    }
+
+    const usuario = await prisma.usuario.create({
+      data: {
+        matricula: matriculaValida,
+        nome: nomeNormalizado,
+        email: emailNormalizado,
+        senha: await bcrypt.hash(senha, SALT_ROUNDS),
+        coapac: false,
+      },
+    });
+
+    return res.status(201).json(sanitizeUsuario(usuario));
+  } catch (error) {
+    console.error("Erro ao cadastrar usuário:", error?.message || error);
+
+    if (error.code === "P2002") {
+      return res.status(409).json({ error: "Já existe um usuário com essa matrícula ou e-mail." });
+    }
+
+    return res.status(500).json({ error: "Falha ao cadastrar usuário." });
+  }
+});
 
 // POST /Usuarios/login
 router.post("/login", async function (req, res) {
@@ -58,7 +117,7 @@ router.post("/login", async function (req, res) {
 router.get("/me", authMiddleware, async function (req, res) {
   try {
     const usuario = await prisma.usuario.findUnique({
-      where: { matricula: Number(req.user.matricula) },
+      where: { matricula: String(req.user.matricula) },
     });
 
     if (!usuario) {
@@ -94,7 +153,7 @@ router.get("/:matricula", authMiddleware, async function (req, res) {
     }
 
     const isCoapac = Boolean(req.user?.coapac);
-    const isSameUser = Number(req.user?.matricula) === matricula;
+    const isSameUser = String(req.user?.matricula) === matricula;
 
     if (!isCoapac && !isSameUser) {
       return res.status(403).json({ error: "Você não tem permissão para ver este usuário." });
@@ -121,8 +180,8 @@ router.post("/", authMiddleware, requireAdmin, async function (req, res) {
   try {
     const { matricula, nome, email, senha, coapac = false } = req.body;
 
-    const matriculaNum = parseMatricula(matricula);
-    if (matriculaNum === null || !nome) {
+    const matriculaValida = parseMatricula(matricula);
+    if (matriculaValida === null || !nome) {
       return res.status(400).json({
         error: "Matrícula (número inteiro) e nome são obrigatórios.",
       });
@@ -137,7 +196,7 @@ router.post("/", authMiddleware, requireAdmin, async function (req, res) {
 
     const usuario = await prisma.usuario.create({
       data: {
-        matricula: matriculaNum,
+        matricula: matriculaValida,
         nome,
         email: email || null,
         senha: senha ? await bcrypt.hash(senha, SALT_ROUNDS) : null,
@@ -167,7 +226,7 @@ router.put("/:matricula", authMiddleware, async function (req, res) {
     }
 
     const isCoapac = Boolean(req.user?.coapac);
-    const isSameUser = Number(req.user?.matricula) === matricula;
+    const isSameUser = String(req.user?.matricula) === matricula;
 
     if (!isCoapac && !isSameUser) {
       return res.status(403).json({ error: "Você não tem permissão para atualizar este usuário." });

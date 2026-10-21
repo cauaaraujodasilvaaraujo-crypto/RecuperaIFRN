@@ -1,3 +1,5 @@
+require('dotenv').config();
+var cors = require('cors');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,7 +10,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usuariosRouter = require('./routes/Usuario');
 var classificacaoRouter = require('./routes/classificacao');
-var itemRouter= require("./routes/item");
+var itemRouter = require("./routes/item");
 var app = express();
 //var sessionSecret = process.env.SESSION_SECRET;
 //var allowedOrigins = (process.env.FRONTEND_ORIGINS || 'http://localhost:5173,http://127.0.0.1:5173')
@@ -28,30 +30,25 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use((req, res, next) => {
-  var origin = req.headers.origin;
-  if (origin && allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Vary', 'Origin');
-  } else {
-    res.header('Access-Control-Allow-Origin', '*');
-  }
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(200);
-  }
-
-  next();
-});
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/usuarios', usuariosRouter);
+app.use('/Usuarios', usuariosRouter);
 app.use('/classificacao', classificacaoRouter);
-app.use('/item',itemRouter);
+app.use('/Classificacao', classificacaoRouter);
+app.use('/item', itemRouter);
+app.use('/itens', itemRouter);
+app.use('/Itens', itemRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

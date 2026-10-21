@@ -1,13 +1,243 @@
- 
-body { 
-    font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; padding: 50px; 
-}
-.container { 
-    background: white; padding: 40px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 500px; margin: auto; 
-}
-h1 { color: #2E8B57; } /* Verde IFRN */
-.btn { display: inline-block; margin: 10px; padding: 10px 20px; text-decoration: none; color: white; border-radius: 5px; font-weight: bold; }
-.btn-login { background-color: #2E8B57; }
-.btn-cadastro { background-color: #333; }
+/* Design Premium - Tela Inicial (Home com Card Centralizado) */
 
-    
+.home-page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+  background-image: 
+    radial-gradient(at 10% 15%, rgba(47, 158, 65, 0.12) 0px, transparent 45%),
+    radial-gradient(at 90% 10%, rgba(34, 197, 94, 0.09) 0px, transparent 40%),
+    radial-gradient(at 85% 85%, rgba(47, 158, 65, 0.11) 0px, transparent 45%),
+    radial-gradient(at 15% 85%, rgba(16, 185, 129, 0.07) 0px, transparent 40%),
+    radial-gradient(#e2e8f0 1.1px, transparent 1.1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+  padding: 40px 16px;
+  color: #0f172a;
+  overflow: hidden;
+}
+
+.home-page-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(47, 158, 65, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.home-page-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.14) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.home-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 460px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(47, 158, 65, 0.22);
+  border-radius: 24px;
+  padding: 42px 34px;
+  box-shadow: 
+    0 1px 3px 0 rgba(47, 158, 65, 0.04),
+    0 24px 48px -12px rgba(15, 23, 42, 0.08),
+    0 8px 24px -6px rgba(47, 158, 65, 0.10);
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.home-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(47, 158, 65, 0.1) 0%, #2f9e41 50%, rgba(47, 158, 65, 0.1) 100%);
+  border-radius: 24px 24px 0 0;
+}
+
+.home-card:hover {
+  border-color: rgba(47, 158, 65, 0.38);
+  box-shadow: 
+    0 2px 4px 0 rgba(47, 158, 65, 0.06),
+    0 32px 64px -16px rgba(15, 23, 42, 0.10),
+    0 12px 28px -6px rgba(47, 158, 65, 0.14);
+  transform: translateY(-2px);
+}
+
+.home-badge-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.home-icon-badge {
+  width: 66px;
+  height: 66px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border: 1px solid rgba(47, 158, 65, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #15803d;
+  box-shadow: 
+    0 6px 18px rgba(34, 197, 94, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease;
+}
+
+.home-card:hover .home-icon-badge {
+  transform: scale(1.06) rotate(3deg);
+}
+
+.home-icon-badge svg {
+  width: 32px;
+  height: 32px;
+}
+
+.home-pill-tag {
+  display: inline-block;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.home-title {
+  margin: 0 0 10px 0;
+  font-size: 1.95rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+}
+
+.home-title span {
+  color: #2f9e41;
+}
+
+.home-desc {
+  margin: 0 0 30px 0;
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.55;
+  font-weight: 450;
+}
+
+.home-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 12px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-home-primary {
+  background: linear-gradient(135deg, #2f9e41 0%, #248234 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 
+    0 4px 14px rgba(47, 158, 65, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-home-primary:hover {
+  background: linear-gradient(135deg, #34a847 0%, #227b31 100%);
+  box-shadow: 
+    0 6px 20px rgba(47, 158, 65, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-1.5px);
+}
+
+.btn-home-primary:active {
+  transform: translateY(0);
+}
+
+.btn-home-secondary {
+  background: #f8fafc;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.btn-home-secondary:hover {
+  background: #ffffff;
+  border-color: #2f9e41;
+  color: #2f9e41;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  transform: translateY(-1.5px);
+}
+
+.btn-home-outline {
+  background: transparent;
+  color: #64748b;
+  border: 1px dashed #cbd5e1;
+  font-size: 0.92rem;
+}
+
+.btn-home-outline:hover {
+  background: #ffffff;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.user-logged-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.user-logged-box p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: #166534;
+}
+
+.home-footer-note {
+  margin: 28px 0 0 0;
+  font-size: 0.80rem;
+  color: #94a3b8;
+  font-weight: 450;
+}
